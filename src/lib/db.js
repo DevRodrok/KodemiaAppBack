@@ -4,7 +4,8 @@ const {
   DB_USER,
   DB_PASSWORD,
   DB_HOST,
-  DB_NAME
+  DB_NAME,
+  JWT_SECRET
 } = process.env
 
 function connect (){
@@ -16,4 +17,6 @@ function connect (){
   })
 }
 
-module.exports = connect
+// const url = `mongodb+srv://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`;
+// const connect = mongoose.connect(url, {useNewUrlParser: true, useUnifiedTopology: true})
+module.exports = {connect}

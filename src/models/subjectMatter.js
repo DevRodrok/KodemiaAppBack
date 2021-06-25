@@ -8,8 +8,8 @@ const schema =  new mongoose.Schema({
   },
   resources: {
     type:String
-  },
-  comments: [{type: mongoose.Schema.Types.ObjectId, ref:koders}]
+  }
+  
 })
 
 module.exports=mongoose.model("subjectMatter", schema)

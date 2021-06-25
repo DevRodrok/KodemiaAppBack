@@ -28,10 +28,10 @@ const schema = new mongoose.Schema({
 
  }
 
- //preguntar por los comentarios del admin
+ 
 
 })
 
  
 
-module.exports= mongoose.model("admin", schema)
+module.exports= mongoose.model("admins", schema)

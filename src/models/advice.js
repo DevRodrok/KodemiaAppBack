@@ -1,5 +1,4 @@
 
-const { urlencoded } = require("express")
 const mongoose =  require("mongoose")
 const koders = require("./koders")
 
@@ -9,16 +8,20 @@ const schema = new mongoose.Schema({
     required: true
   }, 
   img:{
-    type:urlencoded,
-    //duda
-  },
-  generation: [{type: mongoose.Schema.Types.ObjectId, ref: koders}],
+    type:String,
+   },
   date:{
     type:Date,
     required: true
   }, 
+  comments: [{type: mongoose.Schema.Types.ObjectId, ref: koder}],
+  likes: {
+    type: Number
+
+  }
   
-  //preguntar por los like's
+  
+
 })
 
 module.exports=mongoose.model("advice", schema)
