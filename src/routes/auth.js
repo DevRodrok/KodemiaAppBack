@@ -5,7 +5,7 @@ const authMiddleware = require('../middlewares/auth')
 const { response } = require('express')
 
 const router = express.Router()
-
+//se debe de borrar
 router.get('/', async(req, res) =>{
   // const allKoders = await koders.getAll()
   console.log("ruta raiz")

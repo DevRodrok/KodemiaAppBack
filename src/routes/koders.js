@@ -8,7 +8,7 @@ const authMiddleware = require('../middlewares/auth')
 const router = express.Router()
 
 router.get('/', async(req, res) =>{
-  // const allKoders = await koders.getAll()
+ const allKoders = await koders.getAll()
   console.log("ruta raiz")
   
   res.json({

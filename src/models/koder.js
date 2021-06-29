@@ -33,7 +33,7 @@ const schema = new mongoose.Schema({
   //quien modifica con useCases y route es admin
   isActive:{
     type: Boolean,
-    required: true
+    required: false
   },
   //esto solo lo puede cambiar admin
   bootCamp:{
