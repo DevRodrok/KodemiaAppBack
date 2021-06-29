@@ -30,11 +30,12 @@ const schema = new mongoose.Schema({
     type: String,
     required: true
   },
-  //otro dato que checar
+  //quien modifica con useCases y route es admin
   isActive:{
     type: Boolean,
-    required: true
+    required: false
   },
+  //esto solo lo puede cambiar admin
   bootCamp:{
     type: String,
     required: true
@@ -45,14 +46,9 @@ const schema = new mongoose.Schema({
   },
   //checar con mentores
   picture:{
-    type: urlencoded
-  }, 
-  comments:{
-    type: String,
-    minlength: 5,
-    maxlength: 8000
-
+    type: String
   }
+ 
   
 })
 

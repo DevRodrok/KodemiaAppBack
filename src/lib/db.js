@@ -4,7 +4,8 @@ const {
   DB_USER,
   DB_PASSWORD,
   DB_HOST,
-  DB_NAME
+  DB_NAME,
+  JWT_SECRET
 } = process.env
 
 function connect (){
@@ -16,4 +17,5 @@ function connect (){
   })
 }
 
-module.exports = connect
+
+module.exports = {connect}
