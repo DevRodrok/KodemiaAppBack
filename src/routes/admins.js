@@ -15,9 +15,9 @@ router.get('/', async(req, res) => {
 
 router.patch('/:id', authMiddleware, async (req, res) => {
   const id = req.params.id
-  const {lastName, firstName, email, password, phone} = req.body
+  const {lastName, firstName, email, password, phone, picture} = req.body
 
-  const adminUpdate = await admins.updateById(id, lastName, firstName, email, password, phone)
+  const adminUpdate = await admins.updateById(id, lastName, firstName, email, password, phone,picture)
   
   res.json({
     success: true,

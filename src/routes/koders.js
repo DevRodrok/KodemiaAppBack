@@ -17,6 +17,16 @@ router.get('/', async(req, res) =>{
   })
 })
 
+router.post('/', async (req, res) => {
+  const {lastName, firstName, generation, email, password, isActive, bootCamp, phone, picture} = request.body
+  const koderCreated = await koders.create(lastName, firstName, generation, email, password, isActive, bootCamp, phone, picture)
+
+  res.json({
+    success: true,
+    data: koderCreated
+  })
+})
+
 router.patch('/:id', authMiddleware, async (req, res) => {
   const id = req.params.id
   const {lastName, firstName, email, password, phone, picture} = req.body

@@ -4,14 +4,11 @@ const cors = require('cors')
 const kodersRouter = require('./routes/koders')
 const adminsRouter = require('./routes/admins')
 const auth = require('./routes/auth')
-
-
 const server = express()
+
 const {response} = require('express')
 
 server.use(cors())
-
-
 server.use(express.json())
 server.use('/koders', kodersRouter)
 server.use('/admins', adminsRouter)
