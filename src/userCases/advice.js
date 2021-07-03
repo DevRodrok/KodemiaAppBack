@@ -11,19 +11,19 @@ function getLatest(){
 }
 
 function getLastWeek(){
-  return advice.find({date: { $gte: new Date(new Date() - 7 * 60 * 60 * 24 * 1000)}}).sort({date: 'desc'})
+  return advice.find({date: { $lte: new Date(new Date() - 7 * 60 * 60 * 24 * 1000)}}).sort({date: 'desc'})
 }
 
 function getLastMonth(){
-  return advice.find({date: {$gte: new Date(new Date() - 30 * 7 * 60 * 60 * 24 * 1000)}}).sort({date: 'desc'})
+  return advice.find({date: {$lte: new Date(new Date() - 4 * 7 * 60 * 60 * 24 * 1000)}}).sort({date: 'desc'})
 }
 
 function getLastYear(){
-  return advice.find({date: {$gte: new Date(new Date() - 12 * 30 * 7 * 60 * 60 * 24 * 1000)}}).sort({date: 'desc'})
+  return advice.find({date: {$lte: new Date(new Date() - 12 * 4 * 7 * 60 * 60 * 24 * 1000)}}).sort({date: 'desc'})
 }
 
 function postAdvice(info, img, date, comments){
-  return advice.create(info, img, date, comments)
+  return advice.create({info, img, date, comments})
 }
 
 
