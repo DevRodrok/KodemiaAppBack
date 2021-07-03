@@ -9,11 +9,10 @@ const resourcesRouter = require('./routes/resources')
 
 
 const server = express()
+
 const {response} = require('express')
 
 server.use(cors())
-
-
 server.use(express.json())
 server.use('/koders', kodersRouter)
 server.use('/admins', adminsRouter)
