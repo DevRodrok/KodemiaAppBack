@@ -9,5 +9,6 @@ function postResource(moduleName, resources){
 }
 
 module.exports = {
-    getByModule
+    getByModule,
+    postResource
 }
