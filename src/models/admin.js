@@ -29,7 +29,7 @@ const schema = new mongoose.Schema({
  },
  picture: {
    type: String,
-   required: true
+   required: false
  }
 
  
