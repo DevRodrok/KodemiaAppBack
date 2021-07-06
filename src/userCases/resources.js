@@ -5,7 +5,7 @@ function getByModule(module = 'helloKoders'){
 }
 
 function postResource(moduleName, resources){
-    return subject.create({moduleName, resources})
+    return subject.create({moduleName,resources})
 }
 
 module.exports = {

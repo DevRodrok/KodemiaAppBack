@@ -7,9 +7,9 @@ const schema =  new mongoose.Schema({
     required: true
   },
   resources: {
-    type:String
+    type:String,
+    required: true
   }
-  
 })
 
 module.exports=mongoose.model("subjectMatter", schema)

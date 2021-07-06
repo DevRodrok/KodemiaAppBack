@@ -18,7 +18,7 @@ router.post("/", async (req, res) => {
     const newResource = subject.postResource(moduleName, resources);
     res.json({
       success: true,
-      data: newResource,
+      data: newResource
     });
   } catch (error) {
     res.status(401);
