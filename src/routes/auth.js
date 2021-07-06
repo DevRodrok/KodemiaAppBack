@@ -16,87 +16,87 @@ router.get('/', async(req, res) =>{
   })
 })
 
-router.post('/koders/signIn', async (req, res)=>{
+// router.post('/koders/signIn', async (req, res)=>{
 
-  try {
-    const {lastName, firstName, generation, email, password, isActive, bootcamp, phone, picture} = req.body
-    const koderCreated = await auth.signUpKoders(lastName, firstName, generation, email, password, isActive, bootcamp, phone, picture)
+//   try {
+//     const {lastName, firstName, generation, email, password, bootCamp, phone, picture} = req.body
+//     const koderCreated = await auth.signUpKoders(lastName, firstName, generation, email, password, bootCamp, phone, picture)
+//    console.log(req.body)
+//     res.json({
+//       success: true,
+//       data: koderCreated
+//     })
+//   } catch(error){
+//     res.status(401)
+//     res.json({
+//       success: false,
+//       message: error.message
+//     })
+//   }
+// })
 
-    res.json({
-      success: true,
-      data: koderCreated
-    })
-  } catch(error){
-    res.status(401)
-    res.json({
-      success: false,
-      message: error.message
-    })
-  }
-})
+// router.post('/koder/login', async(req, res)=>{
+//   try{
+//     const {email, password} = req.body
+//     const token = await auth.loginKoders(email, password)
 
-router.post('/koder/login', async(req, res)=>{
-  try{
-    const {email, password} = req.body
-    const token = await auth.loginKoders(email, password)
+//     res.json({
+//       success: true,
+//       message: ('Koder logged'),
+//       data:{
+//         token: token,
+//         email: email
+//       }
+//     })
+//   } catch(error){
+//     res.status(401)
+//     res.json({
+//       success: false,
+//       message: error.message
+//     })
+//   }
+// })
 
-    res.json({
-      success: true,
-      message: ('Koder logged'),
-      data:{
-        token: token,
-        email: email
-      }
-    })
-  } catch(error){
-    res.status(401)
-    res.json({
-      success: false,
-      message: error.message
-    })
-  }
-})
+// router.post('/admin/signIn', async (req, res) => {
 
-router.post('/admin/signIn', async (req, res) => {
+// try {
+//   const {lastName, firstName, gitHub, email, password, phone, picture} = req.body
+//   const adminCreated = await auth.signUpAdmins(lastName, firstName, gitHub, email, password, phone, picture )
 
-try {
-  const {lastName, firstName, email, password, phone, picture} = req.body
-  const adminCreated = await auth.signUpAdmins(lastName, firstName, email, password, phone, picture )
+//   res.json({
+//     success: true,
+//     data: adminCreated
+//   })
+// } catch(error) {
+//   res.status(401)
+//   res.json({
+//     success: false,
+//     message: error.message
+//   })
+// }
 
-  res.json({
-    success: true,
-    data: adminCreated
-  })
-} catch(error) {
-  res.status(401)
-  res.json({
-    success: false,
-    message: error.message
-  })
-}
+// })
 
-})
+// router.post('/admin/login', async(req, res) => {
+//   try {
+//     const {email, password} = req.body
+//     const token = await auth.loginAdmins(email, password)
 
-router.post('/admin/login', async(req, res) => {
-  try {
-    const {email, password} = req.body
-    const token = await auth.loginAdmins(email, password)
-
-    res.json({
-      success: true,
-      message: ('Admin logged'),
-      data: {
-        token: token,
-        email: email
-      }
-    })
-  } catch(error){
-    res.status(401)
-    res.json({
-      success: false, 
-      message: error.message
-    })
-  }
-})
+//     res.json({
+//       success: true,
+//       message: ('Admin logged'),
+//       data: {
+//         token: token,
+//         email: email
+//       }
+//     })
+//   } catch(error){
+//     res.status(401)
+//     res.json({
+//       success: false, 
+//       message: error.message
+//     })
+//   }
+// })
 
 module.exports = router

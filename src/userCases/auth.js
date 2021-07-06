@@ -6,9 +6,9 @@ const koders = require('../models/koder')
 const admins = require('../models/admin')
 
 
-async function signUpKoders (lasName, firstName, generation, email, password, isActive, bootcamp, phone){
+async function signUpKoders (lastName, firstName, generation, gitHub, email, password, isActive, bootCamp, phone){
   const passwordEncripted = await bcrypt.hash(password, 10)
-  return koders.create({lasName, firstName, generation, email, password: passwordEncripted, isActive, bootcamp, phone})
+  return koders.create({lastName, firstName, generation, gitHub, email, password: passwordEncripted, isActive, bootCamp, phone})
 }
 
 async function signUpAdmins (lastName, firstName, email, password, phone){
