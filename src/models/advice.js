@@ -16,6 +16,11 @@ const schema = new mongoose.Schema({
   likes: {
     type: Number
 
+  },
+  createdAt:{
+    type: Date,
+    default: Date.now,
+    expires: '1w'
   }
   
   
