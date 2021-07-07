@@ -2,8 +2,8 @@
 const koders = require('../models/koder')
 
 
-function getAll(){
-  const allKoders = koders.find()
+function getByGeneration(num){
+  const allKoders = koders.find({generation: num})
   return allKoders
 }
 
@@ -21,7 +21,7 @@ function deleteById(id){
 
 
 module.exports = {
-  getAll,
+  getByGeneration,
   getById, 
   updateById,
   deleteById

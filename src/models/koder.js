@@ -14,7 +14,7 @@ const schema = new mongoose.Schema({
   }, 
   
   generation:{
-    type: Object,
+    type: Number,
     required: true
   },
   gitHub: {

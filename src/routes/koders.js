@@ -9,12 +9,13 @@ const auth = require('../userCases/auth')
 const router = express.Router()
 
 router.get('/', async(req, res) =>{
- const allKoders = await koders.getAll()
-  console.log("ruta raiz")
+ const {generation} = req.body
+ const filterByGeneration = await koders.getByGeneration(generation)
+ 
   
   res.json({
     success: true,
-    data: allKoders
+    data: filterByGeneration
   })
 })
 
