@@ -10,8 +10,8 @@ function getById(id) {
   return admins.findById(id)
 }
 
-function updateById(id, lastName, firstName, email, password, phone,){
-  return admins.findByIdAndUpdate(id, {lastName, firstName, email, password, phone})
+function updateById(id, lastName, firstName, email, password, phone, picture){
+  return admins.findByIdAndUpdate(id, {lastName, firstName, email, password, phone, picture})
 }
 
 
