@@ -19,29 +19,29 @@ router.get("/latest", async (req, res) => {
   });
 });
 
-router.get("/getLastWeek", async (req, res) => {
-  const sortedByDate = await advice.getLastWeek();
-  res.json({
-    success: true,
-    data: sortedByDate,
-  });
-});
+// router.get("/getLastWeek", async (req, res) => {
+//   const sortedByDate = await advice.getLastWeek();
+//   res.json({
+//     success: true,
+//     data: sortedByDate,
+//   });
+// });
 
-router.get("/getLastMonth", async (req, res) => {
-  const sortedByDate = await advice.getLastMonth();
-  res.json({
-    success: true,
-    data: sortedByDate,
-  });
-});
+// router.get("/getLastMonth", async (req, res) => {
+//   const sortedByDate = await advice.getLastMonth();
+//   res.json({
+//     success: true,
+//     data: sortedByDate,
+//   });
+// });
 
-router.get("/getLastYear", async (req, res) => {
-  const sortedByDate = await advice.getLastYear();
-  res.json({
-    success: true,
-    data: sortedByDate,
-  });
-});
+// router.get("/getLastYear", async (req, res) => {
+//   const sortedByDate = await advice.getLastYear();
+//   res.json({
+//     success: true,
+//     data: sortedByDate,
+//   });
+// });
 
 router.post("/", authMiddleware, async (req, res) => {
   try {

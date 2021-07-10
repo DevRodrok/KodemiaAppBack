@@ -23,3 +23,4 @@ async function postResource(moduleName, resources){
 module.exports = {
     getByModule,
     postResource
+}

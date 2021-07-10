@@ -30,7 +30,7 @@ async function loginKoders(email, password){
 }
 
 async function loginAdmins (email, password){
-  const adminFound = admins.findOne({email})
+  const adminFound = await admins.findOne({email})
 
   if(!adminFound) throw new Error('El usuario o contraseña no coinciden')
 

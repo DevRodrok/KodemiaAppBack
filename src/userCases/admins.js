@@ -2,7 +2,7 @@
 const admins = require('../models/admin')
 
 function getAll(){
-  const allAdmins = admins.find.apply()
+  const allAdmins = admins.find()
   return allAdmins
 }
 

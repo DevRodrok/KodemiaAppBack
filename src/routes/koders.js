@@ -64,9 +64,8 @@ router.post('/login', async(req, res)=>{
 
 router.patch('/:id', authMiddleware, async (req, res) => {
   const id = req.params.id
-  const {lastName, firstName, gitHub, email, password, phone, picture} = req.body
 
-  const koderUpdated = await koders.updateById(id, lastName, firstName, gitHub, email, password, phone, picture)
+  const koderUpdated = await koders.updateById(id, req.body)
 
   res.json({
     success: true,

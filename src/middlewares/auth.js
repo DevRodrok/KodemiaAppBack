@@ -4,6 +4,7 @@ const jwt = require('jsonwebtoken')
 function auth (req, res, next){
   try{
     const token = req.headers.authorization
+    console.log(token)
     if(!token){
       throw new Error('Token required')
     }

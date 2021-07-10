@@ -11,8 +11,8 @@ function getById(id){
   return koders.findById(id)
 }
 
-function updateById(id, lastName, firstName, email, password, phone, picture){
-  return koders.findByIdAndUpdate(id, {lastName, firstName, email, password, phone, picture })
+function updateById(id, newVal){
+  return koders.findByIdAndUpdate(id, newVal)
 }
 
 function deleteById(id){
