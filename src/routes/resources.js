@@ -15,7 +15,7 @@ router.get("/", async (req, res) => {
 router.post("/", async (req, res) => {
   try {
     const { moduleName, resources } = req.body;
-    const newResource = subject.postResource(moduleName, resources);
+    const newResource = await subject.postResource(moduleName, resources);
     res.json({
       success: true,
       data: newResource
