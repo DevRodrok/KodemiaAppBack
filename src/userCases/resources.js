@@ -1,3 +1,4 @@
+
 const subject = require('../models/subjectMatter')
 var isDuplicated
 
@@ -22,4 +23,3 @@ async function postResource(moduleName, resources){
 module.exports = {
     getByModule,
     postResource
-}
