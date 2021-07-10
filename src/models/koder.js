@@ -1,4 +1,4 @@
-const { urlencoded } = require("express")
+
 const mongoose = require("mongoose")
 
 const schema = new mongoose.Schema({
@@ -12,11 +12,13 @@ const schema = new mongoose.Schema({
     required: true,
     trim: true
   }, 
-  //preguntar a Nao y Rose como se va a manejar esta parte
-  //duda
+  
   generation:{
-    type: Object,
+    type: Number,
     required: true
+  },
+  gitHub: {
+    type: String,
   },
   email:{
     type:String,
@@ -33,7 +35,7 @@ const schema = new mongoose.Schema({
   //quien modifica con useCases y route es admin
   isActive:{
     type: Boolean,
-    required: true
+    required: false
   },
   //esto solo lo puede cambiar admin
   bootCamp:{
