@@ -1,23 +1,26 @@
-
 const mongoose =  require("mongoose")
-const koders = require("./koders")
+const koders = require("./koder")
 
 const schema = new mongoose.Schema({
   info:{
     type: String,
-    required: true
   }, 
   img:{
     type:String,
    },
   date:{
     type:Date,
-    required: true
+    default: Date.now,
   }, 
-  comments: [{type: mongoose.Schema.Types.ObjectId, ref: koder}],
+  comments: [{type: mongoose.Schema.Types.ObjectId, ref: koders}],
   likes: {
     type: Number
 
+  },
+  createdAt:{
+    type: Date,
+    default: Date.now,
+    expires: '1w'
   }
   
   
