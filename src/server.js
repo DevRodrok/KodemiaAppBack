@@ -6,18 +6,14 @@ const adminsRouter = require('./routes/admins')
 const resourcesRouter = require('./routes/resources')
 const auth = require('./routes/auth')
 
-
 const server = express()
+
 const {response} = require('express')
 
 server.use(cors())
-
-
 server.use(express.json())
 server.use('/koders', kodersRouter)
 server.use('/admins', adminsRouter)
-server.use('/auth', auth)
-
 server.use('/resources', resourcesRouter)
 
 

@@ -26,6 +26,10 @@ const schema = new mongoose.Schema({
    type: Number,
    required: true,
 
+ },
+ picture: {
+   type: String,
+   required: false
  }
 
  
