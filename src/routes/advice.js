@@ -5,7 +5,8 @@ const authMiddleware = require("../middlewares/auth");
 const router = express.Router();
 
 router.get("/", async (req, res) => {
-  const allAdvices = await advice.getAll();
+  const {bootcamp, number} = req.body
+  const allAdvices = await advice.getAllByGeneration(bootcamp, number);
   res.json({
     success: true,
     data: allAdvices,
@@ -45,8 +46,8 @@ router.get("/latest", async (req, res) => {
 
 router.post("/", authMiddleware, async (req, res) => {
   try {
-    const { info, img, date, comments } = req.body;
-    const newAdvice = await advice.postAdvice(info, img, date, comments);
+    const { info, img, comments } = req.body;
+    const newAdvice = await advice.postAdvice(info, img, comments);
     res.json({
       success: true,
       data: newAdvice,

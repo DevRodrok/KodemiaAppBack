@@ -3,7 +3,6 @@ const {request, response} = require('express')
 const express = require('express')
 const koders = require('../userCases/koders')
 const authMiddleware = require('../middlewares/auth')
-const auth = require('../userCases/auth')
 
 
 const router = express.Router()
