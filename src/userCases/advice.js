@@ -1,31 +1,45 @@
+const advice = require("../models/advice");
 
-const advice = require('../models/advice')
-
-
-function getAllByGeneration(language, generationNumber){
-return advice.find({generation:{bootcamp:language,number:generationNumber}})
+function getAllByGeneration(generation) {
+  return advice.find({"generation":{
+    "bootcamp":generation.bootcamp,
+    "number":`${generation.number}`
+  }});
 }
 
-function getLatest(){
-  return advice.find().sort({createdAt: 'desc'})
+function getLatest() {
+  return advice.find().sort({ createdAt: "desc" });
 }
 
-function getLastWeek(){
-  return advice.find({createdAt: { $lte: new Date(new Date() - 7 * 60 * 60 * 24 * 1000)}}).sort({date: 'desc'})
+function getLastWeek() {
+  return advice
+    .find({
+      createdAt: { $lte: new Date(new Date() - 7 * 60 * 60 * 24 * 1000) },
+    })
+    .sort({ date: "desc" });
 }
 
-function getLastMonth(){
-  return advice.find({createdAt: {$lte: new Date(new Date() - 4 * 7 * 60 * 60 * 24 * 1000)}}).sort({date: 'desc'})
+function getLastMonth() {
+  return advice
+    .find({
+      createdAt: { $lte: new Date(new Date() - 4 * 7 * 60 * 60 * 24 * 1000) },
+    })
+    .sort({ date: "desc" });
 }
 
-function getLastYear(){
-  return advice.find({createdAt: {$lte: new Date(new Date() - 12 * 4 * 7 * 60 * 60 * 24 * 1000)}}).sort({date: 'desc'})
+function getLastYear() {
+  return advice
+    .find({
+      createdAt: {
+        $lte: new Date(new Date() - 12 * 4 * 7 * 60 * 60 * 24 * 1000),
+      },
+    })
+    .sort({ date: "desc" });
 }
 
-function postAdvice(info, img, comments){
-  return advice.create({info, img, comments})
+function postAdvice(info, title, img, generation) {
+  return advice.create({ info, title, img, generation });
 }
-
 
 module.exports = {
   getAllByGeneration,
@@ -33,5 +47,5 @@ module.exports = {
   getLastWeek,
   getLastMonth,
   getLastYear,
-  postAdvice
-}
+  postAdvice,
+};

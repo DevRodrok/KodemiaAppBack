@@ -23,14 +23,12 @@ const schema = new mongoose.Schema({
     expires: '1w'
   },
   generation:{
-    type:Object,
     bootcamp:{
       type:String,
     },
     number:{
       type: Number,
     },
-    required:true
   }
   
   

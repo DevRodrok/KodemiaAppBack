@@ -2,6 +2,7 @@
 const express = require('express')
 const admins = require('../userCases/admins')
 const authMiddleware = require('../middlewares/auth')
+const auth = require('../userCases/auth')
 
 const router = express.Router()
 
