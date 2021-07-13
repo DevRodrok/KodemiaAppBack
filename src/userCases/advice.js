@@ -60,16 +60,6 @@ async function increaseLikes(_id, token) {
   }
 }
 
-// async function postResource(moduleName, resources){
-//   await subject.findOne({'resources' : resources}, (err, resource) => {
-//           return isDuplicated = resource
-//   })
-//   if(isDuplicated){
-//       return `Duplicated Resource: ${isDuplicated.resources}`
-//   }
-//   return subject.create({moduleName, resources})
-// }
-
 module.exports = {
   getAllByGeneration,
   getLatest,
