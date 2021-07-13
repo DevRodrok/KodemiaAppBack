@@ -44,6 +44,15 @@ router.get("/latest", async (req, res) => {
 //   });
 // });
 
+router.patch("/:id", async(req,res) => {
+  const id = req.params.id
+  const updatedAdvice = await advice.increaseLikes(id)
+  res.json({
+    success: true,
+    data: updatedAdvice
+  })
+})
+
 router.post("/", authMiddleware, async (req, res) => {
   try {
     const { info, title, img, generation } = req.body;

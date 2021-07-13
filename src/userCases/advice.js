@@ -41,6 +41,10 @@ function postAdvice(info, title, img, generation) {
   return advice.create({ info, title, img, generation });
 }
 
+function increaseLikes(id){
+  return advice.findByIdAndUpdate(id,{$inc:{likes:1}})
+}
+
 module.exports = {
   getAllByGeneration,
   getLatest,
@@ -48,4 +52,5 @@ module.exports = {
   getLastMonth,
   getLastYear,
   postAdvice,
+  increaseLikes
 };

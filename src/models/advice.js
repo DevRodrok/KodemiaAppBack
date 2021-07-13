@@ -14,9 +14,10 @@ const schema = new mongoose.Schema({
     type:String,
    },
   // comments: [{type: mongoose.Schema.Types.ObjectId, ref: koders}],
-  // likes: {
-  //   type: Number
-  // },
+  likes: {
+    type: Number,
+    default: 0
+  },
   createdAt:{
     type: Date,
     default: Date.now,
