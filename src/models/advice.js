@@ -30,10 +30,8 @@ const schema = new mongoose.Schema({
     number:{
       type: Number,
     },
-  }
-  
-  
-
+  },
+  users:[String]
 })
 
 module.exports=mongoose.model("advice", schema)

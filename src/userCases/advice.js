@@ -1,10 +1,14 @@
 const advice = require("../models/advice");
+const koders = require("../models/koder");
+const jwt = require("jsonwebtoken");
 
 function getAllByGeneration(generation) {
-  return advice.find({"generation":{
-    "bootcamp":generation.bootcamp,
-    "number":`${generation.number}`
-  }});
+  return advice.find({
+    generation: {
+      bootcamp: generation.bootcamp,
+      number: `${generation.number}`,
+    },
+  });
 }
 
 function getLatest() {
@@ -41,8 +45,19 @@ function postAdvice(info, title, img, generation) {
   return advice.create({ info, title, img, generation });
 }
 
-function increaseLikes(id){
-  return advice.findByIdAndUpdate(id,{$inc:{likes:1}})
+async function increaseLikes(_id, token) {
+  const decoded = jwt.verify(token, `${process.env.JWT_SECRET}`);
+  const { id } = decoded;
+  let koderFound = await advice.find({ users: { $eq: `${id}` } });
+  console.log(koderFound.length)
+  if (koderFound.length !== 0) {
+    throw new Error("Like duplicado");
+  } else {
+    return advice.findByIdAndUpdate(_id, {
+      $inc: { likes: 1 },
+      $push: { users: id },
+    });
+  }
 }
 
 module.exports = {
@@ -52,5 +67,5 @@ module.exports = {
   getLastMonth,
   getLastYear,
   postAdvice,
-  increaseLikes
+  increaseLikes,
 };

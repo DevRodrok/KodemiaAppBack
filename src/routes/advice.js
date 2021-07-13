@@ -44,13 +44,23 @@ router.get("/latest", async (req, res) => {
 //   });
 // });
 
-router.patch("/:id", async(req,res) => {
+router.patch("/:id", authMiddleware, async(req,res) => {
   const id = req.params.id
-  const updatedAdvice = await advice.increaseLikes(id)
-  res.json({
-    success: true,
-    data: updatedAdvice
-  })
+  const token = req.get('Authorization')
+  try {
+    const updatedAdvice = await advice.increaseLikes(id, token)
+    res.json({
+      success: true,
+      data: updatedAdvice
+    })
+  } catch (error) {
+    res.status(401)
+    res.json({
+      success: false,
+      message: error.message
+    })
+  }
+
 })
 
 router.post("/", authMiddleware, async (req, res) => {
