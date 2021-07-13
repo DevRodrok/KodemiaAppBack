@@ -2,9 +2,8 @@ const express = require('express')
 const cors = require('cors')
 const kodersRouter = require('./routes/koders')
 const adminsRouter = require('./routes/admins')
-const resourcesRouter = require('./routes/resources')
 const adviceRouter = require('./routes/advice')
-
+const resourcesRouter = require('./routes/resources')
 const server = express()
 
 const {response} = require('express')

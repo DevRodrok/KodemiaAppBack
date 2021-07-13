@@ -4,23 +4,32 @@ const koders = require("./koder")
 const schema = new mongoose.Schema({
   info:{
     type: String,
+    required: true
   }, 
+  title:{
+    type: String,
+    required:true
+  },
   img:{
     type:String,
    },
-  date:{
-    type:Date,
-    default: Date.now,
-  }, 
-  comments: [{type: mongoose.Schema.Types.ObjectId, ref: koders}],
+  // comments: [{type: mongoose.Schema.Types.ObjectId, ref: koders}],
   likes: {
-    type: Number
-
+    type: Number,
+    default: 0
   },
   createdAt:{
     type: Date,
     default: Date.now,
     expires: '1w'
+  },
+  generation:{
+    bootcamp:{
+      type:String,
+    },
+    number:{
+      type: Number,
+    },
   }
   
   
