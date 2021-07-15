@@ -24,7 +24,7 @@ async function loginKoders(email, password){
 
   if(!isPasswordValid) throw new Error ('El usuario o contraseña no coiciden')
 
-  const token = jwt.sign({id: userFound._id}, process.env.JWT_SECRET)
+  const token = jwt.sign({id: userFound._id, admin:false}, process.env.JWT_SECRET)
 
   return token
 }
@@ -38,14 +38,21 @@ async function loginAdmins (email, password){
 
   if(!isPasswordValid) throw new Error('El usuario o contraseña no coinciden')
 
-  const token = jwt.sign({id: adminFound._id}, process.env.JWT_SECRET)
+  const token = jwt.sign({id: adminFound._id, admin:true}, process.env.JWT_SECRET)
 
-  return token
+  return token;
+}
+
+function getUserType(token) {
+  const decoded = jwt.verify(token, `${process.env.JWT_SECRET}`);
+  const { admin } = decoded;
+  return admin & true;
 }
 
 module.exports = {
   signUpKoders,
   signUpAdmins,
   loginKoders,
-  loginAdmins
-}
+  loginAdmins,
+  getUserType,
+};
