@@ -8,14 +8,10 @@ function getByModule(module = 'helloKoders'){
 
 async function postResource(moduleName, resources){
     await subject.findOne({'resources' : resources}, (err, resource) => {
-        if (resource){
             return isDuplicated = resource
-        }else{
-            return isDuplicated = resource
-        }
     })
     if(isDuplicated){
-        return `Duplicate Resource: ${isDuplicated.resources}`
+        return `Duplicated Resource: ${isDuplicated.resources}`
     }
     return subject.create({moduleName, resources})
 }
