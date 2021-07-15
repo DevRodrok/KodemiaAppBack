@@ -40,12 +40,19 @@ async function loginAdmins (email, password){
 
   const token = jwt.sign({id: adminFound._id, admin:true}, process.env.JWT_SECRET)
 
-  return token
+  return token;
+}
+
+function getUserType(token) {
+  const decoded = jwt.verify(token, `${process.env.JWT_SECRET}`);
+  const { admin } = decoded;
+  return admin & true;
 }
 
 module.exports = {
   signUpKoders,
   signUpAdmins,
   loginKoders,
-  loginAdmins
-}
+  loginAdmins,
+  getUserType,
+};
