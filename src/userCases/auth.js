@@ -4,11 +4,20 @@ const jwt = require('jsonwebtoken')
 
 const koders = require('../models/koder')
 const admins = require('../models/admin')
+const Generation = require('../models/generation')
+const { findOne } = require('../models/koder')
 
 
-async function signUpKoders (lastName, firstName, generation, gitHub, email, password, isActive, bootCamp, phone){
+async function signUpKoders (lastName, firstName, generation, gitHub, email, password, isActive, phone){
+ console.log(generation)
   const passwordEncripted = await bcrypt.hash(password, 10)
-  return koders.create({lastName, firstName, generation, gitHub, email, password: passwordEncripted, isActive, bootCamp, phone})
+  const findGen = await Generation.findOne({generationNumber: generation.generationNumber, bootCamp:generation.bootCamp})
+  console.log(findGen)
+  generation = findGen._id
+  
+  
+  return koders.create({lastName, firstName, generation, gitHub, email, password: passwordEncripted, isActive, phone})
+  
 }
 
 async function signUpAdmins (lastName, firstName, email, password, phone){
