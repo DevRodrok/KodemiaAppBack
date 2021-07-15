@@ -3,7 +3,7 @@ const subject = require("../userCases/resources");
 
 const router = express.Router();
 
-router.get("/", async (req, res) => {
+router.post("/byModule", async (req, res) => {
   const { moduleName } = req.body;
   const allResources = await subject.getByModule(moduleName);
   res.json({
