@@ -1,10 +1,13 @@
 
 const admins = require('../models/admin')
+const koders = require('../models/koder')
 
-function getAll(){
-  const allAdmins = admins.find()
-  return allAdmins
-}
+
+ function getByGeneration(num){
+   const allKoders = koders.find({generation: num})
+   return allKoders
+ }
+
 
 function getById(id) {
   return admins.findById(id)
@@ -15,14 +18,16 @@ function updateById(id, lastName, firstName, email, password, phone, picture){
 }
 
 
-//duda para eliminar o activar y desactivar koders
+
+
+
 function deleteById(id){
   return admins.findByIdAndDelete(id)
 }
 
 
 module.exports = {
-  getAll,
+  getByGeneration,
   getById,
   updateById,
   deleteById
