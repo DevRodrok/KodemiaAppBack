@@ -1,6 +1,6 @@
 
 const express = require('express')
-const Generation = require('../userCases/generation')
+const generation = require('../userCases/generation')
 const authMiddleware = require('../middlewares/auth')
 const router = express.Router()
 
@@ -50,7 +50,7 @@ router.get('/byStatus', async (req, res) => {
 })
 
 
-router.patch('/changeStatus', async (req, res) => {
+router.patch('/changeStatus/:id', async (req, res) => {
   const id = req.params.id
   const newStatus = req.body
   

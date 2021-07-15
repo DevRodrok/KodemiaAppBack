@@ -6,14 +6,6 @@ const auth = require('../userCases/auth')
 
 const router = express.Router()
 
-router.get('/', async(req, res) => {
-  const allAdmins = await admins.getAll()
-  res.json({
-    success: true,
-    data: allAdmins
-  })
-})
-
 router.post('/signUp', async (req, res) => {
 
   try {
@@ -76,9 +68,8 @@ router.get('/:id', async (req,res) => {
 
 router.patch('/:id', authMiddleware, async (req, res) => {
   const id = req.params.id
-  const {lastName, firstName, email, password, phone, picture} = req.body
 
-  const adminUpdate = await admins.updateById(id, lastName, firstName, email, password, phone,picture)
+  const adminUpdate = await admins.updateById(id, req.body)
   
   res.json({
     success: true,
