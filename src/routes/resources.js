@@ -1,5 +1,5 @@
 const express = require("express");
-const subject = require("../userCases/Resources");
+const subject = require("../userCases/resources");
 
 const router = express.Router();
 

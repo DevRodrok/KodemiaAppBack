@@ -51,7 +51,7 @@ async function increaseLikes(_id, token) {
   let koderFound = await advice.find({ users: { $eq: `${id}` } });
   console.log(koderFound.length)
   if (koderFound.length !== 0) {
-    throw new Error("Like duplicado");
+    throw new Error("Duplicated like");
   } else {
     return advice.findByIdAndUpdate(_id, {
       $inc: { likes: 1 },

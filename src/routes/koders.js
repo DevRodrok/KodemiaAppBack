@@ -68,6 +68,24 @@ router.post('/byGeneration', async (req, res) => {
     data: filterByGeneration
   })
 })
+
+router.get('/:id', async (req,res) => {
+  const token = req.get('Authorization')
+  try{
+    const userType = await auth.getUserType(token)
+    res.json({
+      success: true,
+      data: userType
+    })
+  }catch(error){
+    res.status(401)
+    res.json({
+      success:true,
+      message:error.message
+    })
+  }
+
+})
  
 
 

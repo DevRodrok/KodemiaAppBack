@@ -56,6 +56,24 @@ router.post('/signUp', async (req, res) => {
     }
   })
 
+router.get('/:id', async (req,res) => {
+  const token = req.get('Authorization')
+  try{
+    const userType = await auth.getUserType(token)
+    res.json({
+      success: true,
+      data: userType
+    })
+  }catch(error){
+    res.status(401)
+    res.json({
+      success:true,
+      message:error.message
+    })
+  }
+
+})
+
 router.patch('/:id', authMiddleware, async (req, res) => {
   const id = req.params.id
   const {lastName, firstName, email, password, phone, picture} = req.body

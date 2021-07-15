@@ -1,6 +1,7 @@
 const express = require("express");
 const advice = require("../userCases/advice");
 const authMiddleware = require("../middlewares/auth");
+const auth = require('../userCases/auth')
 
 const router = express.Router();
 
@@ -64,7 +65,12 @@ router.patch("/:id", authMiddleware, async(req,res) => {
 })
 
 router.post("/", authMiddleware, async (req, res) => {
+  const token = req.get('Authorization')
   try {
+    const userType = await auth.getUserType(token)
+    if(!userType){
+      throw new Error("Not an Admin")
+    }
     const { info, title, img, generation } = req.body;
     const newAdvice = await advice.postAdvice(info, title, img, generation);
     res.json({
