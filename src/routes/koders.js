@@ -8,7 +8,7 @@ const auth = require('../userCases/auth')
 
 const router = express.Router()
 
-router.get('/', async(req, res) =>{
+router.post('/', async(req, res) =>{
  const {generation} = req.body
  const filterByGeneration = await koders.getByGeneration(generation)
  
@@ -87,8 +87,6 @@ router.get('/:id', async (req,res) => {
 
 })
  
-
-
 router.patch('/:id', authMiddleware, async (req, res) => {
   const id = req.params.id
 

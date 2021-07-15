@@ -22,7 +22,7 @@ router.post('/newGen', async (req, res) => {
   }
 })
 
-router.get('/byGenerations', async (req, res) => {
+router.post('/byGenerations', async (req, res) => {
   const {generationNumber} = req.body
   const allGenerations = await generation.getByGeneration(generationNumber)
   res.json({
@@ -31,7 +31,7 @@ router.get('/byGenerations', async (req, res) => {
   })
 })
 
-router.get('/byBootCamp', async (req, res) => {
+router.post('/byBootCamp', async (req, res) => {
   const {bootCamp} = req.body
   const allBootCamps = await generation.getByBootCamp(bootCamp)
   res.json({
@@ -40,7 +40,7 @@ router.get('/byBootCamp', async (req, res) => {
   })
 })
 
-router.get('/byStatus', async (req, res) => {
+router.post('/byStatus', async (req, res) => {
   const {status} = req.body
   const allGenActive = await generation.getByStatus(status)
   res.json({

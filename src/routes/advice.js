@@ -5,7 +5,7 @@ const auth = require('../userCases/auth')
 
 const router = express.Router();
 
-router.get("/", async (req, res) => {
+router.post("/", async (req, res) => {
   const {generation} = req.body
   const allAdvices = await advice.getAllByGeneration(generation);
   res.json({
