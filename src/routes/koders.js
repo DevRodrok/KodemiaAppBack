@@ -3,6 +3,7 @@ const express = require('express')
 const koders = require('../userCases/koders')
 const authMiddleware = require('../middlewares/auth')
 const auth = require('../userCases/auth')
+const koder = require('../models/koder')
 const router = express.Router()
 
 router.post('/signUp', async (req, res) => {
@@ -54,6 +55,15 @@ router.post('/byGeneration', async (req, res) => {
   })
 })
 
+router.post('/byGeneration/:id', async(req,res) => {
+  const id = req.params.id
+  const koderFound = await koders.getById(id)
+  res.json({
+    success:true,
+    data: koderFound
+  })
+})
+
 router.get('/:id', async (req,res) => {
   const token = req.get('Authorization')
   try{
@@ -69,7 +79,6 @@ router.get('/:id', async (req,res) => {
       message:error.message
     })
   }
-
 })
  
 router.patch('/:id', authMiddleware, async (req, res) => {
