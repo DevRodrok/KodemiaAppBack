@@ -3,6 +3,7 @@ const cors = require('cors')
 const kodersRouter = require('./routes/koders')
 const adminsRouter = require('./routes/admins')
 const adviceRouter = require('./routes/advice')
+const generationRouter =require('./routes/generations')
 const resourcesRouter = require('./routes/resources')
 const server = express()
 
@@ -14,6 +15,7 @@ server.use('/koders', kodersRouter)
 server.use('/admins', adminsRouter)
 server.use('/advice', adviceRouter)
 server.use('/resources', resourcesRouter)
+server.use('/generation', generationRouter)
 
 
 

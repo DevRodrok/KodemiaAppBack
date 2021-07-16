@@ -3,7 +3,7 @@ const subject = require("../userCases/resources");
 
 const router = express.Router();
 
-router.get("/", async (req, res) => {
+router.post("/byModule", async (req, res) => {
   const { moduleName } = req.body;
   const allResources = await subject.getByModule(moduleName);
   res.json({
@@ -14,8 +14,8 @@ router.get("/", async (req, res) => {
 
 router.post("/", async (req, res) => {
   try {
-    const { moduleName, resources } = req.body;
-    const newResource = await subject.postResource(moduleName, resources);
+    const { moduleName, title, resources } = req.body;
+    const newResource = await subject.postResource(moduleName, title, resources);
     res.json({
       success: true,
       data: newResource

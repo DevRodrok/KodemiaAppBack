@@ -1,28 +1,21 @@
 
 const admins = require('../models/admin')
-
-function getAll(){
-  const allAdmins = admins.find()
-  return allAdmins
-}
+const koders = require('../models/koder')
 
 function getById(id) {
   return admins.findById(id)
 }
 
-function updateById(id, lastName, firstName, email, password, phone, picture){
-  return admins.findByIdAndUpdate(id, {lastName, firstName, email, password, phone, picture})
+function updateById(id, newVal){
+  return admins.findByIdAndUpdate(id, newVal)
 }
 
-
-//duda para eliminar o activar y desactivar koders
 function deleteById(id){
   return admins.findByIdAndDelete(id)
 }
 
 
 module.exports = {
-  getAll,
   getById,
   updateById,
   deleteById

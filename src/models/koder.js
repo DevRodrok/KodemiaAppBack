@@ -1,5 +1,8 @@
 
 const mongoose = require("mongoose")
+const Generation = require('./generation')
+const {Schema} = mongoose
+const {Types} = Schema
 
 const schema = new mongoose.Schema({
   lastName:{
@@ -14,8 +17,8 @@ const schema = new mongoose.Schema({
   }, 
   
   generation:{
-    type: Number,
-    required: true
+    type: Types.ObjectId,
+    ref: 'Generation'
   },
   gitHub: {
     type: String,
@@ -32,21 +35,17 @@ const schema = new mongoose.Schema({
     type: String,
     required: true
   },
-  //quien modifica con useCases y route es admin
+  
   isActive:{
     type: Boolean,
     required: false
   },
-  //esto solo lo puede cambiar admin
-  bootCamp:{
-    type: String,
-    required: true
-  },
+  
   phone:{
     type: Number,
     required: true
   },
-  //checar con mentores
+  
   picture:{
     type: String
     
@@ -55,6 +54,4 @@ const schema = new mongoose.Schema({
   
 })
 
- 
-
-module.exports= mongoose.model("koders", schema)
+module.exports= mongoose.model('koders', schema)
