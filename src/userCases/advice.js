@@ -6,7 +6,7 @@ function getAllByGeneration(generation) {
   return advice.find({
     generation: {
       bootcamp: generation.bootcamp,
-      number: `${generation.number}`,
+      number: generation.number
     },
   });
 }
