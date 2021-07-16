@@ -1,6 +1,5 @@
 
 const admins = require('../models/admin')
-const koders = require('../models/koder')
 
 function getById(id) {
   return admins.findById(id)

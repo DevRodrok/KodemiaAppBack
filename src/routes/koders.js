@@ -1,23 +1,9 @@
 
-const {request, response} = require('express')
 const express = require('express')
 const koders = require('../userCases/koders')
 const authMiddleware = require('../middlewares/auth')
 const auth = require('../userCases/auth')
-
-
 const router = express.Router()
-
-router.post('/', async(req, res) =>{
- const {generation} = req.body
- const filterByGeneration = await koders.getByGeneration(generation)
- 
-  
-  res.json({
-    success: true,
-    data: filterByGeneration
-  })
-})
 
 router.post('/signUp', async (req, res) => {
   
@@ -61,7 +47,6 @@ router.post('/login', async(req, res)=>{
 })
 
 router.post('/byGeneration', async (req, res) => {
-  console.log(req.body)
   const filterByGeneration = await koders.getByGeneration(req.body.generationNumber)
   res.json({
     success: true,
@@ -89,9 +74,8 @@ router.get('/:id', async (req,res) => {
  
 router.patch('/:id', authMiddleware, async (req, res) => {
   const id = req.params.id
-
   const koderUpdated = await koders.updateById(id, req.body)
-
+   
   res.json({
     success: true,
     data: koderUpdated

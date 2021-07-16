@@ -15,7 +15,6 @@ const schema = new mongoose.Schema({
     required: true,
     trim: true
   }, 
-  
   generation:{
     type: Types.ObjectId,
     ref: 'Generation'
@@ -35,23 +34,17 @@ const schema = new mongoose.Schema({
     type: String,
     required: true
   },
-  
   isActive:{
     type: Boolean,
     required: false
   },
-  
   phone:{
     type: Number,
     required: true
   },
-  
   picture:{
     type: String
-    
   }
- 
-  
 })
 
 module.exports= mongoose.model('koders', schema)

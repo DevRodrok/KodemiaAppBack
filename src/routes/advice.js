@@ -2,7 +2,6 @@ const express = require("express");
 const advice = require("../userCases/advice");
 const authMiddleware = require("../middlewares/auth");
 const auth = require('../userCases/auth')
-
 const router = express.Router();
 
 router.post("/byGeneration", async (req, res) => {
@@ -13,6 +12,7 @@ router.post("/byGeneration", async (req, res) => {
     data: allAdvices,
   });
 });
+
 router.get("/latest", async (req, res) => {
   const sortedByDate = await advice.getLatest();
   res.json({
@@ -20,30 +20,6 @@ router.get("/latest", async (req, res) => {
     data: sortedByDate,
   });
 });
-
-// router.get("/getLastWeek", async (req, res) => {
-//   const sortedByDate = await advice.getLastWeek();
-//   res.json({
-//     success: true,
-//     data: sortedByDate,
-//   });
-// });
-
-// router.get("/getLastMonth", async (req, res) => {
-//   const sortedByDate = await advice.getLastMonth();
-//   res.json({
-//     success: true,
-//     data: sortedByDate,
-//   });
-// });
-
-// router.get("/getLastYear", async (req, res) => {
-//   const sortedByDate = await advice.getLastYear();
-//   res.json({
-//     success: true,
-//     data: sortedByDate,
-//   });
-// });
 
 router.patch("/:id", authMiddleware, async(req,res) => {
   const id = req.params.id
@@ -61,7 +37,6 @@ router.patch("/:id", authMiddleware, async(req,res) => {
       message: error.message
     })
   }
-
 })
 
 router.post("/", authMiddleware, async (req, res) => {
@@ -73,6 +48,8 @@ router.post("/", authMiddleware, async (req, res) => {
     }
     const { info, title, img, generation } = req.body;
     const newAdvice = await advice.postAdvice(info, title, img, generation);
+    const response =await advice.sendAdvice(info, generation.number)
+    
     res.json({
       success: true,
       data: newAdvice,

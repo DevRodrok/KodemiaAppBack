@@ -1,6 +1,6 @@
+
 const express = require("express");
 const subject = require("../userCases/resources");
-
 const router = express.Router();
 
 router.post("/byModule", async (req, res) => {

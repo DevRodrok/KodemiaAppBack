@@ -4,7 +4,6 @@ const generation = require('../userCases/generation')
 const authMiddleware = require('../middlewares/auth')
 const router = express.Router()
 
-
 router.post('/newGen', async (req, res) => {
   try{
     const {generationNumber, bootCamp, status} = req.body
@@ -48,7 +47,6 @@ router.post('/byStatus', async (req, res) => {
     data: allGenActive
   })
 })
-
 
 router.patch('/changeStatus/:id', async (req, res) => {
   const id = req.params.id

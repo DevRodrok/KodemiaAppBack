@@ -1,7 +1,5 @@
 
 const mongoose = require('mongoose')
-const koders = require("./koder")
-
 
 const schema = new mongoose.Schema({
 generationNumber: {
@@ -14,7 +12,6 @@ required: true
 },
 status:{
   type: Boolean
-  
 }
 })
 

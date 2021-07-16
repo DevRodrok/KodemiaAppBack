@@ -3,11 +3,9 @@ const express = require('express')
 const admins = require('../userCases/admins')
 const authMiddleware = require('../middlewares/auth')
 const auth = require('../userCases/auth')
-
 const router = express.Router()
 
 router.post('/signUp', async (req, res) => {
-
   try {
     const {lastName, firstName, email, password, phone, picture} = req.body
     const adminCreated = await auth.signUpAdmins(lastName, firstName, email, password, phone, picture )
@@ -23,7 +21,6 @@ router.post('/signUp', async (req, res) => {
       message: error.message
     })
   }
-  
    })
 
    router.post('/login', async(req, res) => {
@@ -63,12 +60,10 @@ router.get('/:id', async (req,res) => {
       message:error.message
     })
   }
-
 })
 
 router.patch('/:id', authMiddleware, async (req, res) => {
   const id = req.params.id
-
   const adminUpdate = await admins.updateById(id, req.body)
   
   res.json({
@@ -76,10 +71,5 @@ router.patch('/:id', authMiddleware, async (req, res) => {
     data: adminUpdate
   })
 })
-
-//accion para borrar koders y modificar estado activo o inactivo
-
-
-
 
 module.exports = router

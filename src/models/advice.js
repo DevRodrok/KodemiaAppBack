@@ -1,5 +1,4 @@
 const mongoose =  require("mongoose")
-const koders = require("./koder")
 
 const schema = new mongoose.Schema({
   info:{
@@ -13,7 +12,6 @@ const schema = new mongoose.Schema({
   img:{
     type:String,
    },
-  // comments: [{type: mongoose.Schema.Types.ObjectId, ref: koders}],
   likes: {
     type: Number,
     default: 0
