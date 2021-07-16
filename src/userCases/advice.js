@@ -1,6 +1,8 @@
 const advice = require("../models/advice");
 const koders = require("../models/koder");
 const jwt = require("jsonwebtoken");
+const slack = require('../lib/slack')
+const generationSlack = require('../config/generation-slack.json')
 
 function getAllByGeneration(generation) {
   return advice.find({
@@ -60,7 +62,16 @@ async function increaseLikes(_id, token) {
   }
 }
 
+
+async function sendAdvice(info, generationNumber){
+const url = generationSlack[generationNumber].url
+const response = await slack.sendAdvice(url, info)
+return response
+
+}
+
 module.exports = {
+  sendAdvice,
   getAllByGeneration,
   getLatest,
   getLastWeek,

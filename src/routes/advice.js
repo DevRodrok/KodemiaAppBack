@@ -21,30 +21,6 @@ router.get("/latest", async (req, res) => {
   });
 });
 
-// router.get("/getLastWeek", async (req, res) => {
-//   const sortedByDate = await advice.getLastWeek();
-//   res.json({
-//     success: true,
-//     data: sortedByDate,
-//   });
-// });
-
-// router.get("/getLastMonth", async (req, res) => {
-//   const sortedByDate = await advice.getLastMonth();
-//   res.json({
-//     success: true,
-//     data: sortedByDate,
-//   });
-// });
-
-// router.get("/getLastYear", async (req, res) => {
-//   const sortedByDate = await advice.getLastYear();
-//   res.json({
-//     success: true,
-//     data: sortedByDate,
-//   });
-// });
-
 router.patch("/:id", authMiddleware, async(req,res) => {
   const id = req.params.id
   const token = req.get('Authorization')
@@ -73,6 +49,11 @@ router.post("/", authMiddleware, async (req, res) => {
     }
     const { info, title, img, generation } = req.body;
     const newAdvice = await advice.postAdvice(info, title, img, generation);
+    const response =await advice.sendAdvice(info, generation.number)
+    
+    
+    
+    
     res.json({
       success: true,
       data: newAdvice,
