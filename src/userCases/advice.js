@@ -1,6 +1,7 @@
  const advice = require("../models/advice");
 const slack = require('../lib/slack')
 const generationSlack = require('../config/generation-slack.json')
+const jwt = require('jsonwebtoken')
 
 function getAllByGeneration(generation) {
   return advice.find({
