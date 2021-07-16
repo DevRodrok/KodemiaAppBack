@@ -22,10 +22,15 @@ function updateGenById(id, status){
   return generation.findByIdAndUpdate(id, status)
 }
 
+function getById(id){
+  return generation.findById(id)
+}
+
 module.exports = {
   postGeneration,
   getByGeneration,
   getByBootCamp,
   updateGenById,
-  getByStatus
+  getByStatus,
+  getById
 }
