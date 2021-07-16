@@ -21,15 +21,14 @@ router.post('/newGen', async (req, res) => {
   }
 })
 
-router.post('/byGenerations/:id'), async (req, res) => {
+router.get('/byGenerations/:id', async (req, res) => {
   const id = req.params.id
   const generationFound = await generation.getById(id)
   res.json({
     success: true,
     data: generationFound
   })
-
-}
+})
 
 router.post('/byGenerations', async (req, res) => {
   const {generationNumber} = req.body
