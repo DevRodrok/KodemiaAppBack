@@ -1,6 +1,4 @@
-const advice = require("../models/advice");
-const koders = require("../models/koder");
-const jwt = require("jsonwebtoken");
+ const advice = require("../models/advice");
 const slack = require('../lib/slack')
 const generationSlack = require('../config/generation-slack.json')
 
@@ -50,9 +48,8 @@ function postAdvice(info, title, img, generation) {
 async function increaseLikes(_id, token) {
   const decoded = jwt.verify(token, `${process.env.JWT_SECRET}`);
   const { id } = decoded;
-  // let koderFound = await advice.findById(_id, {users: `${id}`});
   let koderFound = await advice.find({'_id':_id , 'users': `${id}`});
-  console.log(koderFound.length)
+  
   if (koderFound.length !== 0) {
     throw new Error("Duplicated like");
   } else {

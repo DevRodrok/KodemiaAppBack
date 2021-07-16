@@ -1,21 +1,15 @@
 
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
-
 const koders = require('../models/koder')
 const admins = require('../models/admin')
 const Generation = require('../models/generation')
-const { findOne } = require('../models/koder')
-
 
 async function signUpKoders (lastName, firstName, generation, gitHub, email, password, isActive, phone){
- console.log(generation)
+ 
   const passwordEncripted = await bcrypt.hash(password, 10)
   const findGen = await Generation.findOne({generationNumber: generation.generationNumber, bootCamp:generation.bootCamp})
-  console.log(findGen)
   generation = findGen._id
-  
-  
   return koders.create({lastName, firstName, generation, gitHub, email, password: passwordEncripted, isActive, phone})
   
 }
@@ -30,25 +24,21 @@ async function loginKoders(email, password){
   if (!userFound) throw new Error('El usuario o contraseña no coincide')
 
   const isPasswordValid = await bcrypt.compare(password, userFound.password)
-
   if(!isPasswordValid) throw new Error ('El usuario o contraseña no coiciden')
 
   const token = jwt.sign({id: userFound._id, admin:false}, process.env.JWT_SECRET)
-
   return token
 }
 
 async function loginAdmins (email, password){
-  const adminFound = await admins.findOne({email})
 
+  const adminFound = await admins.findOne({email})
   if(!adminFound) throw new Error('El usuario o contraseña no coinciden')
 
   const isPasswordValid = await bcrypt.compare(password, adminFound.password)
-
   if(!isPasswordValid) throw new Error('El usuario o contraseña no coinciden')
 
   const token = jwt.sign({id: adminFound._id, admin:true}, process.env.JWT_SECRET)
-
   return token;
 }
 
