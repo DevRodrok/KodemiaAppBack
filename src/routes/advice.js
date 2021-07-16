@@ -21,7 +21,7 @@ router.get("/latest", async (req, res) => {
   });
 });
 
-router.patch("/:id", authMiddleware, async(req,res) => {
+router.get("/:id", authMiddleware, async(req,res) => {
   const id = req.params.id
   const token = req.get('Authorization')
   try {
